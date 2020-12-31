@@ -3,11 +3,11 @@
 "use strict";
 
 var extractTriggers = require("./extractTriggers");
-var EXIT = function() {
+var EXIT = function () {
   process.exit(0);
 };
 
-(function() {
+(function () {
   // wrap in function to allow return without exiting process
   var packageDir = process.argv[2];
   if (!packageDir) {
@@ -18,7 +18,7 @@ var EXIT = function() {
   var mod;
   var triggers = [];
   try {
-    mod = require(packageDir);
+    mod = import(packageDir);
   } catch (e) {
     if (e.code === "MODULE_NOT_FOUND") {
       process.send(
